@@ -1,6 +1,7 @@
 import QtQuick 2.10
 import QtQuick.Window 2.10
 import QtQuick.Controls 1.3
+import QtMultimedia 5.0
 
 Window {
     visible: true
@@ -17,21 +18,15 @@ Window {
             Button {
                 text: "Reset"
                 onClicked:{
+                    display.source = "build-QTqml-Desktop_Qt_5_10_0_GCC_64bit-Debug/images/video.gif"
+                    console.log("reset to play video")
                     display.fillMode = Image.Stretch
-                    display.width = 100
-                    display.height = 150
+                    display.width = doo.width
+                    display.height = doo.height
                     display.anchors.centerIn = viewport
                     display.clip = false
                     }
                 }
-            Button {
-                text: "strech"
-                onClicked:{
-                    display.fillMode = Image.Stretch
-                    display.width = 200
-                    display.height = 20
-                }
-            }
             Button {
                 text: "PreserveAspectfit"
                 onClicked:{
@@ -56,37 +51,48 @@ Window {
                     display.height = viewport.height
                 }
             }
-            MouseArea {
-                    id: mousearea
-                    anchors.fill: parent
-                    onClicked: console.log("MouseArea clicked")
-                }
-
         }
-}
 
-onVideo_image: {
-    if(video == true) {
       Rectangle {
-        id: viewport}
-        width: 200; height: 200
+        id: viewport
+        width: 325
+        height: 200
+        color: "#7483f2"
+        border.width: 1
+        border.color: "red"
+        radius:20
+        anchors.centerIn: parent
 
-         AnimatedImage {
+         Rectangle {
+            id: doo
+            width: 323
+            height: 20
+            color: "#7483f2"
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 2
+
+         Video {
                  id: display
                  anchors.centerIn: parent
-                 source: "/build-QTqml-Desktop_Qt_5_10_0_GCC_64bit-Debug/images/video.gif"
+                 //source: "/build-QTqml-Desktop_Qt_5_10_0_GCC_64bit-Debug/images/video.gif"
+                 onStatusChanged: {
+                    if(status == MediaPlayer.Loaded){
+                        console.log(metaData.duration)
+                    }
+                }
          }
-        }
-    }else {
-         Image {
+         VideoOutput {
+             anchors.fill: parent
+             source: Video
+         }
+
+        /* Image {
                  id: display1
                  anchors.centerIn: parent
                  source: "/build-QTqml-Desktop_Qt_5_10_0_GCC_64bit-Debug/images/TM_still.png"
-         }
+         }*/
         }
 }
-
 }
-
-
-
+}

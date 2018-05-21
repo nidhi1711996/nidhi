@@ -1,8 +1,12 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>../build-QTqml-Desktop_Qt_5_10_0_GCC_64bit-Debug/images/TM_still.png</file>
-        <file>../build-QTqml-Desktop_Qt_5_10_0_GCC_64bit-Debug/images/video.gif</file>
+        <file>example.qml</file>
+        <file>image/TM_still.jpg</file>
+        <file>image/TM_still.png</file>
+        <file>image/TM_still_basic_01.png</file>
+        <file>image/TM_still_basic_02.png</file>
+        <file>image/TM_still_basic_03.png</file>
+        <file>image/TM_still_basic_04.png</file>
+        <file>image/TM_video.gif</file>
     </qresource>
-    <qresource prefix="/files"/>
 </RCC>

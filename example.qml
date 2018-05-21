@@ -18,11 +18,11 @@ Window {
             Button {
                 text: "Reset"
                 onClicked:{
-                    display.source = "build-QTqml-Desktop_Qt_5_10_0_GCC_64bit-Debug/images/video.gif"
+                    display.source= "build-QTqml-Desktop_Qt_5_10_0_GCC_64bit-Debug/images/video.gif"
                     console.log("reset to play video")
                     display.fillMode = Image.Stretch
-                    display.width = doo.width
-                    display.height = doo.height
+                    display.width = viewport.width
+                    display.height = viewport.height
                     display.anchors.centerIn = viewport
                     display.clip = false
                     }
@@ -52,7 +52,7 @@ Window {
                 }
             }
         }
-
+}
       Rectangle {
         id: viewport
         width: 325
@@ -63,14 +63,14 @@ Window {
         radius:20
         anchors.centerIn: parent
 
-         Rectangle {
+        /* Rectangle {
             id: doo
             width: 323
             height: 20
             color: "#7483f2"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 2
+            anchors.bottomMargin: 2*/
 
          Video {
                  id: display
@@ -92,7 +92,6 @@ Window {
                  anchors.centerIn: parent
                  source: "/build-QTqml-Desktop_Qt_5_10_0_GCC_64bit-Debug/images/TM_still.png"
          }*/
-        }
-}
+
 }
 }
